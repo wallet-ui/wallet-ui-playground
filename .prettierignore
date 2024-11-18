@@ -1,10 +1,10 @@
-# Add files here to ignore them from prettier formatting
+.changeset/
+.github/workflows/PULL_REQUEST_TEMPLATE.md
 
-/dist
-/coverage
-tmp
-/.yarn
-/.nx/cache
+declarations/
+dist/
+doc/
+lib/
+
 pnpm-lock.yaml
-.angular/cache
-
+pnpm-workspace.yaml
