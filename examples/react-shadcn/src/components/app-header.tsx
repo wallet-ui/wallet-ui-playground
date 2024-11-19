@@ -1,4 +1,3 @@
-import { AppHeaderLink } from '@/components/app-layout.tsx';
 import { Link } from 'react-router-dom';
 
 export interface AppHeaderLink {
