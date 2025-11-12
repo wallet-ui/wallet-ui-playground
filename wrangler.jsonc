@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  },
+  "compatibility_date": "2025-11-12",
+  "name": "wallet-ui-playground",
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "preview_urls": true,
+  "routes": [
+    {
+      "custom_domain": true,
+      "pattern": "playground.wallet-ui.dev"
+    }
+  ],
+  "send_metrics": false
+}
