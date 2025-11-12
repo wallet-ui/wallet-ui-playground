@@ -6,7 +6,7 @@ export function PlaygroundUiWalletDisconnect({ wallet }: { wallet: UiWallet }) {
   const [isLoading, disconnect] = useDisconnect(wallet)
 
   return (
-    <Button variant="secondary" disabled={isLoading} onClick={() => disconnect()}>
+    <Button size="sm" variant="secondary" disabled={isLoading} onClick={() => disconnect()}>
       Disconnect
     </Button>
   )

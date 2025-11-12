@@ -1,8 +1,9 @@
 import { UiWallet } from '@wallet-ui/react'
 import { PlaygroundUiWalletList } from '@/features/playground/playground-ui-wallet-list.tsx'
 import { PlaygroundFeatureWalletListItem } from '@/features/playground/playground-feature-wallet-list-item.tsx'
+import { PlaygroundUiEmpty } from '@/features/playground/playground-ui-empty.tsx'
 
-export function PlaygroundFeatureWalletList({
+export function PlaygroundFeatureWallets({
   selectedWallet,
   selectWallet,
   wallets,
@@ -22,7 +23,11 @@ export function PlaygroundFeatureWalletList({
           />
         </div>
         <div className="col-span-2">
-          {selectedWallet ? <PlaygroundFeatureWalletListItem wallet={selectedWallet} /> : 'Select wallet'}
+          {selectedWallet ? (
+            <PlaygroundFeatureWalletListItem wallet={selectedWallet} />
+          ) : (
+            <PlaygroundUiEmpty title="Select wallet" description="Select a wallet from the list to continue" />
+          )}
         </div>
       </div>
     </div>

@@ -10,9 +10,9 @@ export function PlaygroundUiWalletFeatures({
   title: string
 }) {
   return (
-    <pre className="text-xs space-y-2">
-      <div className="text-lg font-bold">{title}</div>
-      <ul className="space-y-2">
+    <pre className="space-y-2">
+      <div className="text-base">{title}</div>
+      <ul className="space-y-2 text-xs">
         {all.map((item) => {
           const enabled = selected.includes(item)
           return (

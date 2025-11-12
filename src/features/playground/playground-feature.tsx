@@ -1,7 +1,8 @@
 import { useSolana } from '@/components/solana/use-solana.tsx'
 import { useSearchParams } from 'react-router'
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert.tsx'
-import { PlaygroundFeatureWalletList } from '@/features/playground/playground-feature-wallet-list.tsx'
+import { PlaygroundFeatureWallets } from '@/features/playground/playground-feature-wallets.tsx'
+import { PlaygroundUiEmpty } from '@/features/playground/playground-ui-empty.tsx'
+import { PlaygroundUiWalletSuggestions } from '@/features/playground/playground-ui-wallet-suggestions.tsx'
 
 export default function PlaygroundFeature() {
   const { wallets } = useSolana()
@@ -12,29 +13,20 @@ export default function PlaygroundFeature() {
   return (
     <div className="max-w-6xl my-4 mx-auto">
       {wallets.length ? (
-        <PlaygroundFeatureWalletList
+        <PlaygroundFeatureWallets
           selectedWallet={selectedWallet}
           selectWallet={(name) => setParams({ name })}
           wallets={wallets}
         />
       ) : (
-        <Alert variant="destructive">
-          <AlertTitle>No Solana wallets found.</AlertTitle>
-          <AlertDescription>It looks like you have no Solana wallets installed.</AlertDescription>
-        </Alert>
+        <PlaygroundUiEmpty
+          description="It looks like you have no Solana wallets installed."
+          title="No Solana wallets found."
+        >
+          <div>Install any of the wallets below to get started.</div>
+          <PlaygroundUiWalletSuggestions />
+        </PlaygroundUiEmpty>
       )}
     </div>
   )
 }
-
-// function PlaygroundFeatureWalletSignMessage({ account }: { account: UiWalletAccount | undefined }) {
-//   return account ? <div>Wallet Sign Message</div> : null
-// }
-//
-// function PlaygroundFeatureWalletSignIn({ account }: { account: UiWalletAccount | undefined }) {
-//   return account ? <div>Wallet Sign In</div> : null
-// }
-//
-// function PlaygroundFeatureWalletSignTransaction({ account }: { account: UiWalletAccount | undefined }) {
-//   return account ? <div>Wallet Sign Transaction</div> : null
-// }
