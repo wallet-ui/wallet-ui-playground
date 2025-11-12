@@ -5,6 +5,7 @@ import { ThemeSelect } from '@/components/theme-select'
 import { Link, useLocation } from 'react-router'
 import { ClusterDropdown } from '@/components/cluster-dropdown'
 import { WalletDropdown } from '@/components/wallet-dropdown'
+import { cn } from '@/lib/utils.ts'
 
 export function AppHeader({ links = [] }: { links: { label: string; path: string }[] }) {
   const { pathname } = useLocation()
@@ -19,14 +20,16 @@ export function AppHeader({ links = [] }: { links: { label: string; path: string
       <div className="mx-auto flex justify-between items-center">
         <div className="flex items-baseline gap-4">
           <Link to="/" className="text-xl hover:text-neutral-500 dark:hover:text-white">
-            <span>Walletuiplayground</span>
+            <span>Wallet UI Playground</span>
           </Link>
           <div className="hidden md:flex items-center">
             <ul className="flex gap-4 flex-nowrap items-center">
               {links.map(({ label, path }) => (
                 <li key={path}>
                   <Link
-                    className={`hover:text-neutral-500 dark:hover:text-white ${isActive(path) ? 'text-neutral-500 dark:text-white' : ''}`}
+                    className={cn('hover:text-neutral-500 dark:hover:text-gray-50 dark:text-gray-300', {
+                      'text-neutral-500 dark:text-white': isActive(path),
+                    })}
                     to={path}
                   >
                     {label}
