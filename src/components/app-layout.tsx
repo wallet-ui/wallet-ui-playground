@@ -25,7 +25,7 @@ export function AppLayout({
         </main>
         <AppFooter />
       </div>
-      <Toaster closeButton />
+      <Toaster closeButton richColors />
     </ThemeProvider>
   )
 }

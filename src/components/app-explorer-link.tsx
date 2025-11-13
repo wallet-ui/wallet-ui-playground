@@ -2,6 +2,7 @@ import { getExplorerLink, GetExplorerLinkArgs } from 'gill'
 import { getSolanaClusterMoniker } from '@wallet-ui/react-gill'
 import { useSolana } from '@/components/solana/use-solana'
 import { ArrowUpRightFromSquare } from 'lucide-react'
+import { ReactNode } from 'react'
 
 export function AppExplorerLink({
   className,
@@ -9,7 +10,7 @@ export function AppExplorerLink({
   ...link
 }: GetExplorerLinkArgs & {
   className?: string
-  label: string
+  label: ReactNode
 }) {
   const { cluster } = useSolana()
   return (

@@ -1,20 +1,39 @@
-import { UiWallet, WalletUiIcon } from '@wallet-ui/react'
-import { Card, CardAction, CardContent, CardHeader, CardTitle } from '@/components/ui/card.tsx'
+import { SolanaClusterId, UiWallet, WalletUiIcon } from '@wallet-ui/react'
+import { Card, CardAction, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.tsx'
 import { PlaygroundUiWalletDisconnect } from '@/features/playground/playground-ui-wallet-disconnect.tsx'
 import { PlaygroundUiWalletConnect } from '@/features/playground/playground-ui-wallet-connect.tsx'
-import { PlaygroundUiWalletFeatures } from '@/features/playground/playground-ui-wallet-features.tsx'
+import { PlaygroundUiWalletOverview } from '@/features/playground/playground-ui-wallet-overview.tsx'
+import { PlaygroundUiWalletFeatureSignIn } from '@/features/playground/playground-ui-wallet-feature-sign-in.tsx'
+import { PlaygroundUiWalletAddress } from '@/features/playground/playground-ui-wallet-address.tsx'
+import { PlaygroundUiWalletFeatureSignMessage } from '@/features/playground/playground-ui-wallet-feature-sign-message.tsx'
+import { ErrorBoundary } from 'react-error-boundary'
+import { PlaygroundUiError } from '@/features/playground/playground-ui-error.tsx'
+import { Fragment } from 'react'
+import { toast } from 'sonner'
+import { PlaygroundUiWalletFeatureSignAndSendTransaction } from '@/features/playground/playground-ui-wallet-feature-sign-and-send-transaction.tsx'
+import { useSolana } from '@/components/solana/use-solana.tsx'
+import { AppExplorerLink } from '@/components/app-explorer-link.tsx'
+import { PlaygroundUiWalletFeatureSignTransaction } from '@/features/playground/playground-ui-wallet-feature-sign-transaction.tsx'
 
-export function PlaygroundFeatureWalletListItem({ wallet }: { wallet: UiWallet }) {
+export function PlaygroundFeatureWalletListItem({ cluster, wallet }: { cluster: SolanaClusterId; wallet: UiWallet }) {
+  const { client } = useSolana()
   const connected = !!wallet.accounts?.length
-
+  const account = wallet.accounts.length ? wallet.accounts[0] : undefined
   return (
     <div className="space-y-6">
       <Card>
-        <CardHeader className="gap-0">
-          <CardTitle className="flex items-center text-lg gap-2 pt-0.5">
+        <CardHeader>
+          <CardTitle className="flex items-center text-lg gap-2">
             <WalletUiIcon wallet={wallet} />
             <span>{wallet.name}</span>
           </CardTitle>
+          <CardDescription>
+            {connected ? (
+              <PlaygroundUiWalletAddress address={account?.address} />
+            ) : (
+              `Connect to ${wallet.name} to see the accounts`
+            )}
+          </CardDescription>
           <CardAction className="space-x-2">
             {connected ? (
               <PlaygroundUiWalletDisconnect wallet={wallet} />
@@ -24,44 +43,74 @@ export function PlaygroundFeatureWalletListItem({ wallet }: { wallet: UiWallet }
           </CardAction>
         </CardHeader>
       </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Overview</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-3">
-            <div className="col-span-2">
-              <PlaygroundUiWalletFeatures
-                all={['solana:signAndSendTransaction', 'solana:signIn', 'solana:signMessage', 'solana:signTransaction']}
-                selected={wallet.features.filter((f) => f.startsWith('solana:')).sort()}
-                title="Features"
-              />
-            </div>
-            <div className="col-span-1">
-              <PlaygroundUiWalletFeatures
-                all={['solana:devnet', 'solana:localnet', 'solana:mainnet', 'solana:testnet']}
-                selected={wallet.chains.filter((f) => f.startsWith('solana:')).sort()}
-                title="Chains"
-              />
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardHeader>
-          <CardTitle>Accounts</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <ul>
-            {wallet.accounts.map((account) => (
-              <li key={account.address}>
-                <div>{account.address}</div>
-              </li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
+      <PlaygroundUiWalletOverview wallet={wallet} />
+      {account ? (
+        <Fragment>
+          <ErrorBoundary resetKeys={[wallet.name]} fallbackRender={({ error }) => <PlaygroundUiError error={error} />}>
+            <PlaygroundUiWalletFeatureSignIn
+              account={account}
+              cluster={cluster}
+              onError={(err) => toast.error('Error signing in', { description: `${err}` })}
+              onSuccess={(account) =>
+                toast.success('Signing in success', {
+                  description: <PlaygroundUiWalletAddress address={account?.address} />,
+                })
+              }
+              wallet={wallet}
+            />
+          </ErrorBoundary>
+          <ErrorBoundary resetKeys={[wallet.name]} fallbackRender={({ error }) => <PlaygroundUiError error={error} />}>
+            <PlaygroundUiWalletFeatureSignMessage
+              account={account}
+              onError={(err) => toast.error('Error signing message', { description: `${err}` })}
+              onSuccess={(signature) =>
+                toast.success('Signing message success', {
+                  description: <PlaygroundUiWalletAddress address={signature} len={10} />,
+                })
+              }
+              wallet={wallet}
+            />
+          </ErrorBoundary>
+          <ErrorBoundary resetKeys={[wallet.name]} fallbackRender={({ error }) => <PlaygroundUiError error={error} />}>
+            <PlaygroundUiWalletFeatureSignAndSendTransaction
+              account={account}
+              client={client}
+              cluster={cluster}
+              onError={(err) => toast.error('Error signing and sending transaction', { description: `${err}` })}
+              onSuccess={(signature) =>
+                toast.success('Signing and sending transaction success', {
+                  description: (
+                    <AppExplorerLink
+                      transaction={signature}
+                      label={<PlaygroundUiWalletAddress address={signature} len={10} />}
+                    />
+                  ),
+                })
+              }
+              wallet={wallet}
+            />
+          </ErrorBoundary>
+          <ErrorBoundary resetKeys={[wallet.name]} fallbackRender={({ error }) => <PlaygroundUiError error={error} />}>
+            <PlaygroundUiWalletFeatureSignTransaction
+              account={account}
+              client={client}
+              cluster={cluster}
+              onError={(err) => toast.error('Error signing transaction', { description: `${err}` })}
+              onSuccess={(signature) =>
+                toast.success('Signing transaction success', {
+                  description: (
+                    <AppExplorerLink
+                      transaction={signature}
+                      label={<PlaygroundUiWalletAddress address={signature} len={10} />}
+                    />
+                  ),
+                })
+              }
+              wallet={wallet}
+            />
+          </ErrorBoundary>
+        </Fragment>
+      ) : null}
     </div>
   )
 }
