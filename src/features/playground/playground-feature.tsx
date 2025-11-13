@@ -5,7 +5,7 @@ import { PlaygroundUiEmpty } from '@/features/playground/playground-ui-empty.tsx
 import { PlaygroundUiWalletSuggestions } from '@/features/playground/playground-ui-wallet-suggestions.tsx'
 
 export default function PlaygroundFeature() {
-  const { wallets } = useSolana()
+  const { cluster, wallets } = useSolana()
   const [params, setParams] = useSearchParams()
   const selectedWalletName = params.get('name')
   const selectedWallet = wallets.find((wallet) => wallet.name === selectedWalletName) ?? null
@@ -14,6 +14,7 @@ export default function PlaygroundFeature() {
     <div className="max-w-6xl my-4 mx-auto">
       {wallets.length ? (
         <PlaygroundFeatureWallets
+          selectedCluster={cluster.id}
           selectedWallet={selectedWallet}
           selectWallet={(name) => setParams({ name })}
           wallets={wallets}
