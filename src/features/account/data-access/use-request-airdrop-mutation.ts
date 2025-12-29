@@ -1,6 +1,6 @@
+import { type Address, airdropFactory, lamports } from '@solana/kit'
 import { useMutation } from '@tanstack/react-query'
 import { useSolana } from '@/components/solana/use-solana'
-import { type Address, airdropFactory, lamports } from 'gill'
 import { toastTx } from '@/components/toast-tx'
 import { useInvalidateGetBalanceQuery } from './use-invalidate-get-balance-query'
 import { useInvalidateGetSignaturesQuery } from './use-invalidate-get-signatures-query'

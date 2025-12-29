@@ -1,4 +1,4 @@
-import { Address } from 'gill'
+import { Address } from '@solana/kit'
 import { useGetBalanceQuery } from '../data-access/use-get-balance-query'
 import { AccountUiBalanceSol } from './account-ui-balance-sol'
 

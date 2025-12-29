@@ -1,4 +1,4 @@
-import { Address } from 'gill'
+import { Address } from '@solana/kit'
 import { useSolana } from '@/components/solana/use-solana'
 import { AppAlert } from '@/components/app-alert'
 import { Button } from '@/components/ui/button'

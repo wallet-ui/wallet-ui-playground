@@ -1,7 +1,7 @@
+import { Address, getBase64Decoder } from '@solana/kit'
 import { ReadonlyUint8Array, UiWallet, UiWalletAccount, useWalletAccountMessageSigner } from '@wallet-ui/react'
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.tsx'
 import { SyntheticEvent, useCallback, useState } from 'react'
-import { Address, getBase64Decoder } from 'gill'
 import { Input } from '@/components/ui/input.tsx'
 import { Button } from '@/components/ui/button.tsx'
 import { Spinner } from '@/components/ui/spinner.tsx'

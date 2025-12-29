@@ -1,4 +1,5 @@
-import type { Address, SolanaClient } from 'gill'
+import type { Address } from '@solana/kit'
+import type { SolanaClient } from 'gill'
 
 export async function getTokenAccountsByOwner(
   rpc: SolanaClient['rpc'],

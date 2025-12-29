@@ -1,4 +1,4 @@
-import { Address } from 'gill'
+import { Address } from '@solana/kit'
 import { RefreshCw } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { ellipsify } from '@/lib/utils'

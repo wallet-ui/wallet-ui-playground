@@ -1,4 +1,4 @@
-import { address, Address } from 'gill'
+import { address, Address } from '@solana/kit'
 import { useState } from 'react'
 import { UiWalletAccount } from '@wallet-ui/react'
 import { AppModal } from '@/components/app-modal'

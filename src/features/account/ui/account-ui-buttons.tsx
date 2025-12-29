@@ -1,4 +1,4 @@
-import { Address } from 'gill'
+import { Address } from '@solana/kit'
 
 import { useSolana } from '@/components/solana/use-solana'
 import { AccountUiModalAirdrop } from './account-ui-modal-airdrop'
