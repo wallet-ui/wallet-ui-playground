@@ -1,4 +1,4 @@
-import { Address } from 'gill'
+import { Address } from '@solana/kit'
 import { useState } from 'react'
 import { AppModal } from '@/components/app-modal'
 import { Label } from '@/components/ui/label'

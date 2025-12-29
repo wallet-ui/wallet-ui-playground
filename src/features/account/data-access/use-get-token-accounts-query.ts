@@ -1,4 +1,4 @@
-import type { Address } from 'gill'
+import type { Address } from '@solana/kit'
 import { TOKEN_2022_PROGRAM_ADDRESS, TOKEN_PROGRAM_ADDRESS } from 'gill/programs/token'
 import { useSolana } from '@/components/solana/use-solana'
 import { useQuery } from '@tanstack/react-query'

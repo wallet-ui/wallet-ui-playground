@@ -11,8 +11,8 @@ import {
   setTransactionMessageFeePayerSigner,
   setTransactionMessageLifetimeUsingBlockhash,
   signTransactionMessageWithSigners,
-  SolanaClient,
-} from 'gill'
+} from '@solana/kit'
+import { SolanaClient } from 'gill'
 import { Input } from '@/components/ui/input.tsx'
 import { Button } from '@/components/ui/button.tsx'
 import { Spinner } from '@/components/ui/spinner.tsx'
@@ -58,7 +58,7 @@ export function PlaygroundUiWalletFeatureSignTransaction({
       throw new Error()
     }
     return signature
-  }, [client.rpc, text, transactionSigner])
+  }, [client.rpc, sendAndConfirmTransaction, text, transactionSigner])
 
   return (
     <form

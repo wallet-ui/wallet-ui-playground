@@ -1,4 +1,4 @@
-import type { Address } from 'gill'
+import type { Address } from '@solana/kit'
 import { useSolana } from '@/components/solana/use-solana'
 
 export function useGetBalanceQueryKey({ address }: { address: Address }) {

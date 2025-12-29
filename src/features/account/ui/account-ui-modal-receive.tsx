@@ -1,4 +1,4 @@
-import { Address } from 'gill'
+import { Address } from '@solana/kit'
 import { AppExplorerLink } from '@/components/app-explorer-link'
 import { AppModal } from '@/components/app-modal'
 import { toast } from 'sonner'

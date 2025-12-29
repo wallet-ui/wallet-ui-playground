@@ -1,4 +1,4 @@
-import { assertIsAddress } from 'gill'
+import { assertIsAddress } from '@solana/kit'
 import { useMemo } from 'react'
 import { useParams } from 'react-router'
 import { AppHero } from '@/components/app-hero'
