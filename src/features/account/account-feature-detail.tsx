@@ -28,7 +28,7 @@ export default function AccountFeatureDetail() {
         title={<AccountUiBalance address={address} />}
         subtitle={
           <div className="my-4">
-            <AppExplorerLink address={address.toString()} label={ellipsify(address.toString())} />
+            <AppExplorerLink path={`/address/${address.toString()}`} label={ellipsify(address.toString())} />
           </div>
         }
       >

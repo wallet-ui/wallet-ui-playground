@@ -61,7 +61,10 @@ export function AccountUiTokens({ address }: { address: Address }) {
                     <TableCell>
                       <div className="flex space-x-2">
                         <span className="font-mono">
-                          <AppExplorerLink label={ellipsify(pubkey.toString())} address={pubkey.toString()} />
+                          <AppExplorerLink
+                            label={ellipsify(pubkey.toString())}
+                            path={`/address/${pubkey.toString()}`}
+                          />
                         </span>
                       </div>
                     </TableCell>
@@ -70,7 +73,7 @@ export function AccountUiTokens({ address }: { address: Address }) {
                         <span className="font-mono">
                           <AppExplorerLink
                             label={ellipsify(account.data.parsed.info.mint)}
-                            address={account.data.parsed.info.mint.toString()}
+                            path={`/address/${account.data.parsed.info.mint.toString()}`}
                           />
                         </span>
                       </div>
