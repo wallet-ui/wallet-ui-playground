@@ -6,6 +6,6 @@ export function toastTx(signature?: string, title = 'Transaction sent') {
     return
   }
   toast(title, {
-    description: <AppExplorerLink transaction={signature} label="View Transaction" />,
+    description: <AppExplorerLink path={`/tx/${signature}`} label="View Transaction" />,
   })
 }

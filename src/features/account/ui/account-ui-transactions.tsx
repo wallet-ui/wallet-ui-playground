@@ -49,10 +49,10 @@ export function AccountUiTransactions({ address }: { address: Address }) {
                 {items?.map((item) => (
                   <TableRow key={item.signature}>
                     <TableHead className="font-mono">
-                      <AppExplorerLink transaction={item.signature} label={ellipsify(item.signature, 8)} />
+                      <AppExplorerLink path={`/tx/${item.signature}`} label={ellipsify(item.signature, 8)} />
                     </TableHead>
                     <TableCell className="font-mono text-right">
-                      <AppExplorerLink block={item.slot.toString()} label={item.slot.toString()} />
+                      <AppExplorerLink path={`/block/${item.slot.toString()}`} label={item.slot.toString()} />
                     </TableCell>
                     <TableCell>{new Date(Number(item.blockTime ?? '0') * 1000).toISOString()}</TableCell>
                     <TableCell className="text-right">

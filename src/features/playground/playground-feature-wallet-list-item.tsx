@@ -81,8 +81,8 @@ export function PlaygroundFeatureWalletListItem({ cluster, wallet }: { cluster: 
                 toast.success('Signing and sending transaction success', {
                   description: (
                     <AppExplorerLink
-                      transaction={signature}
                       label={<PlaygroundUiWalletAddress address={signature} len={10} />}
+                      path={`/tx/${signature}`}
                     />
                   ),
                 })
@@ -100,8 +100,8 @@ export function PlaygroundFeatureWalletListItem({ cluster, wallet }: { cluster: 
                 toast.success('Signing transaction success', {
                   description: (
                     <AppExplorerLink
-                      transaction={signature}
                       label={<PlaygroundUiWalletAddress address={signature} len={10} />}
+                      path={`/tx/${signature}`}
                     />
                   ),
                 })

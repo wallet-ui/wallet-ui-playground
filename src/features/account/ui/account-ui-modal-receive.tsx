@@ -17,7 +17,7 @@ export function AccountUiModalReceive({ address }: { address: Address }) {
     <AppModal title="Receive" submitLabel="Copy Address" submit={handleCopy}>
       <p>Receive assets by sending them to your public key:</p>
       <div className="flex items-center gap-2">
-        <AppExplorerLink address={address.toString()} label={address.toString()} />
+        <AppExplorerLink path={`/address/${address.toString()}`} label={address.toString()} />
       </div>
     </AppModal>
   )
