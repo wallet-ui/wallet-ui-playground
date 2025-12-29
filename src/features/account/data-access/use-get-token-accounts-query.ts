@@ -1,5 +1,6 @@
 import type { Address } from '@solana/kit'
-import { TOKEN_2022_PROGRAM_ADDRESS, TOKEN_PROGRAM_ADDRESS } from 'gill/programs/token'
+import { TOKEN_PROGRAM_ADDRESS } from '@solana-program/token'
+import { TOKEN_2022_PROGRAM_ADDRESS } from '@solana-program/token-2022'
 import { useSolana } from '@/components/solana/use-solana'
 import { useQuery } from '@tanstack/react-query'
 import { getTokenAccountsByOwner } from './get-token-accounts-by-owner'

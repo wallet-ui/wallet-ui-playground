@@ -1,6 +1,6 @@
 import { Address, getBase58Decoder, signAndSendTransactionMessageWithSigners } from '@solana/kit'
 import { createTransaction } from 'gill'
-import { getTransferSolInstruction } from 'gill/programs'
+import { getTransferSolInstruction } from '@solana-program/system'
 import { toast } from 'sonner'
 import { useMutation } from '@tanstack/react-query'
 import { toastTx } from '@/components/toast-tx'
