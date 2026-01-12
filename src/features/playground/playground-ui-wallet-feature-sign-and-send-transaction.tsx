@@ -13,12 +13,13 @@ import {
   signAndSendTransactionMessageWithSigners,
 } from '@solana/kit'
 import { getAddMemoInstruction } from '@solana-program/memo'
-import { SolanaClient } from 'gill'
 import { Input } from '@/components/ui/input.tsx'
 import { Button } from '@/components/ui/button.tsx'
 import { Spinner } from '@/components/ui/spinner.tsx'
 import { LucideKey } from 'lucide-react'
 import { getErrorMessage } from '@/features/playground/playground-ui-error.tsx'
+
+import { SolanaClient } from '@/components/solana/solana-client'
 
 export function PlaygroundUiWalletFeatureSignAndSendTransaction({
   account,
