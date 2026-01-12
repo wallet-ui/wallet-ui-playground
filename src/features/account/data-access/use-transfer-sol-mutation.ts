@@ -1,5 +1,14 @@
-import { Address, getBase58Decoder, signAndSendTransactionMessageWithSigners } from '@solana/kit'
-import { createTransaction } from 'gill'
+import {
+  Address,
+  appendTransactionMessageInstructions,
+  createTransactionMessage,
+  getBase58Decoder,
+  Instruction,
+  pipe,
+  setTransactionMessageFeePayerSigner,
+  setTransactionMessageLifetimeUsingBlockhash,
+  signAndSendTransactionMessageWithSigners,
+} from '@solana/kit'
 import { getTransferSolInstruction } from '@solana-program/system'
 import { toast } from 'sonner'
 import { useMutation } from '@tanstack/react-query'
@@ -20,18 +29,19 @@ export function useTransferSolMutation({ account, address }: { account: UiWallet
       try {
         const { value: latestBlockhash } = await client.rpc.getLatestBlockhash({ commitment: 'confirmed' }).send()
 
-        const transaction = createTransaction({
-          feePayer: signer,
-          version: 0,
-          latestBlockhash,
-          instructions: [
-            getTransferSolInstruction({
-              amount: input.amount,
-              destination: input.destination,
-              source: signer,
-            }),
-          ],
-        })
+        const instructions: Instruction[] = [
+          getTransferSolInstruction({
+            amount: input.amount,
+            destination: input.destination,
+            source: signer,
+          }),
+        ]
+        const transaction = pipe(
+          createTransactionMessage({ version: 0 }),
+          (tx) => appendTransactionMessageInstructions(instructions, tx),
+          (tx) => setTransactionMessageFeePayerSigner(signer, tx),
+          (tx) => setTransactionMessageLifetimeUsingBlockhash(latestBlockhash, tx),
+        )
 
         const signatureBytes = await signAndSendTransactionMessageWithSigners(transaction)
         const signature = getBase58Decoder().decode(signatureBytes)

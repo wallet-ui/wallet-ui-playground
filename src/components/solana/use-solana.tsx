@@ -1,6 +1,7 @@
 import { useWalletUi } from '@wallet-ui/react'
-import { useWalletUiGill } from '@wallet-ui/react-gill'
 import { GetExplorerUrlProps } from '@/lib/get-explorer-url.ts'
+import { createSolanaClient } from './create-solana-client'
+import { SolanaClient } from '@/components/solana/solana-client.ts'
 
 /**
  * Custom hook to abstract Wallet UI and related functionality from your app.
@@ -9,7 +10,7 @@ import { GetExplorerUrlProps } from '@/lib/get-explorer-url.ts'
  */
 export function useSolana() {
   const { cluster, ...walletUi } = useWalletUi()
-  const client = useWalletUiGill()
+  const client = createSolanaClient({ http: cluster.url }) as SolanaClient
   const explorer: Omit<GetExplorerUrlProps, 'path'> = {
     network: { id: cluster.id, endpoint: cluster.url },
     provider: 'solana',

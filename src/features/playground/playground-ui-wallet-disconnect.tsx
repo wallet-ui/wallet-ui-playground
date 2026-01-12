@@ -1,5 +1,4 @@
-import { UiWallet } from '@wallet-ui/react'
-import { useDisconnect } from '@wallet-ui/react-gill'
+import { UiWallet, useDisconnect } from '@wallet-ui/react'
 import { Button } from '@/components/ui/button.tsx'
 import { Spinner } from '@/components/ui/spinner.tsx'
 import { LucideUnplug } from 'lucide-react'
