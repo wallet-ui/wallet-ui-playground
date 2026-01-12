@@ -57,11 +57,11 @@ importers:
         specifier: ^5.89.0
         version: 5.90.7(react@19.2.0)
       '@wallet-ui/react':
-        specifier: ^2.2.0
-        version: 2.2.0(@solana/kit@5.3.0(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)(utf-8-validate@5.0.10))(@solana/signers@5.3.0(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3))(fastestsmallesttextencoderdecoder@1.0.22)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)
+        specifier: ^2.2.1
+        version: 2.2.1(@solana/kit@5.3.0(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)(utf-8-validate@5.0.10))(fastestsmallesttextencoderdecoder@1.0.22)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)
       '@wallet-ui/tailwind':
-        specifier: ^2.2.0
-        version: 2.2.0(tailwindcss@4.1.17)
+        specifier: ^2.2.1
+        version: 2.2.1(tailwindcss@4.1.17)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -2405,21 +2405,21 @@ packages:
     resolution: {integrity: sha512-Gt8TnSlDZpAl+RWOOAB/kuvC7RpcdWAlFbHNoi4gsXsfaWa1QCT6LBcfIYTPdOZC9OVZUDwqGuGAcqZejDmHjg==}
     engines: {node: '>=16'}
 
-  '@wallet-ui/core@2.2.0':
-    resolution: {integrity: sha512-DQrgFxZJMQbnt2nVn8vcCHNo/HSHtrDF4RO2onverrn94Eu35Y8FJhZP0FwV3g2g3Czh/yGLVebT/YcB8fYMCQ==}
+  '@wallet-ui/core@2.2.1':
+    resolution: {integrity: sha512-CKGmKKXzT4vhDPuRRI7GU6UNelyVH7ewJQx3w6eDkuy7G+SQ+m3xN+Nu8a+aMsz8VxvaxEKvaq4rtJCj+CIyTg==}
     engines: {node: '>=20.18.0'}
     peerDependencies:
       '@solana/kit': ^5.0.0
 
-  '@wallet-ui/react@2.2.0':
-    resolution: {integrity: sha512-2z+WKHM7U+if5qgN4Dx5TbVSqcCU0OM1ReBeV5pzLOg6AZIugQ9OXvqx5CP28bIi4qNtlow7iK1I8/UzGMMd3w==}
+  '@wallet-ui/react@2.2.1':
+    resolution: {integrity: sha512-XwuAI8ld2uQRQh4KhGrNY4AgLeopBFmiQxBWNkUzfyalvo+zFLrVSrrYqFLv+hAkvFSPM/rnpO397uF5qIlJsw==}
     engines: {node: '>=20.18.0'}
     peerDependencies:
-      '@solana/signers': 2.3.0
+      '@solana/kit': ^5.0.0
       react: '>=18'
 
-  '@wallet-ui/tailwind@2.2.0':
-    resolution: {integrity: sha512-VWXj4EC+wSz/0YAXKZU/ihGe0WsEXRV1ZwxGv7CSskmBCoOtEQXlMCRJCiDw1SvdcTin8C9mN/zIbaH0ecaWNQ==}
+  '@wallet-ui/tailwind@2.2.1':
+    resolution: {integrity: sha512-cp+0U9Q/VUTtenei9wbH//ZmvFOLXj1GOe0i9+HlY8YXQfDLRZwIslRWWLO3mOaCgIYXNlogTC9BIyTKNTVsNg==}
     engines: {node: '>=20.18.0'}
     peerDependencies:
       tailwindcss: ^4.1.5
@@ -7138,33 +7138,32 @@ snapshots:
     dependencies:
       '@wallet-standard/base': 1.1.0
 
-  '@wallet-ui/core@2.2.0(@solana/kit@5.3.0(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)(utf-8-validate@5.0.10))':
+  '@wallet-ui/core@2.2.1(@solana/kit@5.3.0(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)(utf-8-validate@5.0.10))':
     dependencies:
       '@nanostores/persistent': 1.1.0(nanostores@1.0.1)
       '@solana/kit': 5.3.0(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)(utf-8-validate@5.0.10)
       nanostores: 1.0.1
 
-  '@wallet-ui/react@2.2.0(@solana/kit@5.3.0(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)(utf-8-validate@5.0.10))(@solana/signers@5.3.0(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3))(fastestsmallesttextencoderdecoder@1.0.22)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)':
+  '@wallet-ui/react@2.2.1(@solana/kit@5.3.0(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)(utf-8-validate@5.0.10))(fastestsmallesttextencoderdecoder@1.0.22)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)':
     dependencies:
       '@nanostores/react': 1.0.0(nanostores@1.0.1)(react@19.2.0)
+      '@solana/kit': 5.3.0(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)(utf-8-validate@5.0.10)
       '@solana/react': 3.0.3(fastestsmallesttextencoderdecoder@1.0.22)(react@19.2.0)(typescript@5.9.3)
-      '@solana/signers': 5.3.0(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)
       '@solana/wallet-standard-features': 1.3.0
       '@wallet-standard/core': 1.1.1
       '@wallet-standard/react': 1.0.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@wallet-ui/core': 2.2.0(@solana/kit@5.3.0(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)(utf-8-validate@5.0.10))
+      '@wallet-ui/core': 2.2.1(@solana/kit@5.3.0(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)(utf-8-validate@5.0.10))
       '@zag-js/dialog': 1.24.2
       '@zag-js/menu': 1.24.2
       '@zag-js/react': 1.24.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       nanostores: 1.0.1
       react: 19.2.0
     transitivePeerDependencies:
-      - '@solana/kit'
       - fastestsmallesttextencoderdecoder
       - react-dom
       - typescript
 
-  '@wallet-ui/tailwind@2.2.0(tailwindcss@4.1.17)':
+  '@wallet-ui/tailwind@2.2.1(tailwindcss@4.1.17)':
     dependencies:
       tailwindcss: 4.1.17
 
