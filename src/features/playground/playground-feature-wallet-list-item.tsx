@@ -11,12 +11,12 @@ import { PlaygroundUiError } from '@/features/playground/playground-ui-error.tsx
 import { Fragment } from 'react'
 import { toast } from 'sonner'
 import { PlaygroundUiWalletFeatureSignAndSendTransaction } from '@/features/playground/playground-ui-wallet-feature-sign-and-send-transaction.tsx'
-import { useSolana } from '@/components/solana/use-solana.tsx'
 import { AppExplorerLink } from '@/components/app-explorer-link.tsx'
 import { PlaygroundUiWalletFeatureSignTransaction } from '@/features/playground/playground-ui-wallet-feature-sign-transaction.tsx'
+import { useSolanaClient } from '@/components/solana/use-solana-client.tsx'
 
 export function PlaygroundFeatureWalletListItem({ cluster, wallet }: { cluster: SolanaClusterId; wallet: UiWallet }) {
-  const { client } = useSolana()
+  const client = useSolanaClient()
   const connected = !!wallet.accounts?.length
   const account = wallet.accounts.length ? wallet.accounts[0] : undefined
   return (

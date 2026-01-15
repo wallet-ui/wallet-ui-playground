@@ -1,9 +1,9 @@
-import { useSolana } from '@/components/solana/use-solana'
 import { address } from '@solana/kit'
 import { AccountUiBalanceCheck } from './account-ui-balance-check'
+import { useWalletUi } from '@wallet-ui/react'
 
 export function AccountUiChecker() {
-  const { account } = useSolana()
+  const { account } = useWalletUi()
   if (!account) {
     return null
   }

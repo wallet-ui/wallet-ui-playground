@@ -1,10 +1,10 @@
 import type { Address } from '@solana/kit'
-import { useSolana } from '@/components/solana/use-solana'
 import { useQuery } from '@tanstack/react-query'
 import { useGetSignaturesQueryKey } from './use-get-signatures-query-key'
+import { useSolanaClient } from '@/components/solana/use-solana-client.tsx'
 
 export function useGetSignaturesQuery({ address }: { address: Address }) {
-  const { client } = useSolana()
+  const client  = useSolanaClient()
 
   return useQuery({
     queryKey: useGetSignaturesQueryKey({ address }),

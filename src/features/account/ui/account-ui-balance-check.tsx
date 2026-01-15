@@ -1,12 +1,12 @@
 import { Address } from '@solana/kit'
-import { useSolana } from '@/components/solana/use-solana'
 import { AppAlert } from '@/components/app-alert'
 import { Button } from '@/components/ui/button'
 import { useRequestAirdropMutation } from '../data-access/use-request-airdrop-mutation'
 import { useGetBalanceQuery } from '../data-access/use-get-balance-query'
+import { useSolanaCluster } from '@/components/solana/use-solana-cluster.tsx'
 
 export function AccountUiBalanceCheck({ address }: { address: Address }) {
-  const { cluster } = useSolana()
+  const cluster = useSolanaCluster()
   const mutation = useRequestAirdropMutation({ address })
   const query = useGetBalanceQuery({ address })
 

@@ -1,11 +1,13 @@
-import { useSolana } from '@/components/solana/use-solana.tsx'
 import { useSearchParams } from 'react-router'
 import { PlaygroundFeatureWallets } from '@/features/playground/playground-feature-wallets.tsx'
 import { PlaygroundUiEmpty } from '@/features/playground/playground-ui-empty.tsx'
 import { PlaygroundUiWalletSuggestions } from '@/features/playground/playground-ui-wallet-suggestions.tsx'
+import { useSolanaCluster } from '@/components/solana/use-solana-cluster.tsx'
+import { useWalletUi } from '@wallet-ui/react'
 
 export default function PlaygroundFeature() {
-  const { cluster, wallets } = useSolana()
+  const { wallets } = useWalletUi()
+  const cluster = useSolanaCluster()
   const [params, setParams] = useSearchParams()
   const selectedWalletName = params.get('name')
   const selectedWallet = wallets.find((wallet) => wallet.name === selectedWalletName) ?? null

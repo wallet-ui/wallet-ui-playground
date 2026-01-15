@@ -1,8 +1,9 @@
 import type { Address } from '@solana/kit'
-import { useSolana } from '@/components/solana/use-solana'
+
+import { useSolanaCluster } from '@/components/solana/use-solana-cluster.tsx'
 
 export function useGetBalanceQueryKey({ address }: { address: Address }) {
-  const { cluster } = useSolana()
+  const cluster = useSolanaCluster()
 
   return ['get-balance', { cluster, address }]
 }

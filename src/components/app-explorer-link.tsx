@@ -1,7 +1,7 @@
-import { useSolana } from '@/components/solana/use-solana'
 import { ArrowUpRightFromSquare } from 'lucide-react'
 import { ReactNode } from 'react'
-import { ExplorerPath, getExplorerUrl } from '@/lib/get-explorer-url.ts'
+import { ExplorerPath } from '@/lib/get-explorer-url.ts'
+import { useSolanaExplorer } from '@/components/solana/use-solana-explorer.tsx'
 
 export function AppExplorerLink({
   className,
@@ -12,10 +12,10 @@ export function AppExplorerLink({
   label: ReactNode
   path: ExplorerPath
 }) {
-  const { explorer } = useSolana()
+  const getExplorerUrl = useSolanaExplorer()
   return (
     <a
-      href={getExplorerUrl({ ...explorer, path })}
+      href={getExplorerUrl(path)}
       target="_blank"
       rel="noopener noreferrer"
       className={className ? className : `link font-mono inline-flex gap-1`}

@@ -1,12 +1,14 @@
 import type { Address } from '@solana/kit'
 import { TOKEN_PROGRAM_ADDRESS } from '@solana-program/token'
 import { TOKEN_2022_PROGRAM_ADDRESS } from '@solana-program/token-2022'
-import { useSolana } from '@/components/solana/use-solana'
 import { useQuery } from '@tanstack/react-query'
 import { getTokenAccountsByOwner } from './get-token-accounts-by-owner'
+import { useSolanaClient } from '@/components/solana/use-solana-client.tsx'
+import { useSolanaCluster } from '@/components/solana/use-solana-cluster.tsx'
 
 export function useGetTokenAccountsQuery({ address }: { address: Address }) {
-  const { client, cluster } = useSolana()
+  const client = useSolanaClient()
+  const cluster = useSolanaCluster()
 
   return useQuery({
     queryKey: ['get-token-accounts', { cluster, address }],
